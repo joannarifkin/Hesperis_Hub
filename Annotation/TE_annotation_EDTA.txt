@@ -1,0 +1,71 @@
+
+#Installation
+
+	cd /nfs/turbo/rsbaucom/lab/SOFTWARE
+	module load singularity
+
+	SINGULARITY_CACHEDIR=./
+	export SINGULARITY_CACHEDIR
+	singularity pull EDTA.sif docker://oushujun/edta:2.0.0
+
+	singularity exec {path}/EDTA.sif EDTA.pl --genome genome.fa [other parameters]
+	
+	{path} : /nfs/turbo/rsbaucom/lab/SOFTWARE/EDTA.sif
+
+#Test run
+
+	module load singularity
+	
+	cd /home/jlrifkin/Hesperis/Hesperis_analyses/Annotation/EDTA/test
+	
+	singularity exec /nfs/turbo/rsbaucom/lab/SOFTWARE/EDTA.sif EDTA.pl --genome genome.fa --genome genome.fa --cds genome.cds.fa --curatedlib ../database/rice6.9.5.liban --exclude genome.exclude.bed --overwrite 1 --sensitive 1 --anno 1 --evaluate 1 --threads 10 &
+
+	perl ../EDTA.pl --genome genome.fa --cds genome.cds.fa --curatedlib ../database/rice6.9.5.liban --exclude genome.exclude.bed --overwrite 1 --sensitive 1 --anno 1 --evaluate 1 --threads 10
+
+
+
+		Wed Sep 28 10:19:32 EDT 2022    Combine the high-quality TE library rice6.9.5.liban with the EDTA library:
+
+		Wed Sep 28 10:19:40 EDT 2022    EDTA final stage finished! You may check out:
+										The final EDTA TE library: genome.fa.mod.EDTA.TElib.fa
+										Family names of intact TEs have been updated by rice6.9.5.liban: genome.fa.mod.EDTA.intact.gff3
+										Comparing to the provided library, EDTA found these novel TEs: genome.fa.mod.EDTA.TElib.novel.fa
+										The provided library has been incorporated into the final library: genome.fa.mod.EDTA.TElib.fa
+
+		Wed Sep 28 10:19:40 EDT 2022    Perform post-EDTA analysis for whole-genome annotation:
+
+		Wed Sep 28 10:19:40 EDT 2022    Homology-based annotation of TEs using genome.fa.mod.EDTA.TElib.fa from scratch.
+
+		Wed Sep 28 10:19:46 EDT 2022    TE annotation using the EDTA library has finished! Check out:
+										Whole-genome TE annotation (total TE: 35.78%): genome.fa.mod.EDTA.TEanno.gff3
+										Whole-genome TE annotation summary: genome.fa.mod.EDTA.TEanno.sum
+										Low-threshold TE masking for MAKER gene annotation (masked: 16.32%): genome.fa.mod.MAKER.masked
+
+		Wed Sep 28 10:19:46 EDT 2022    Evaluate the level of inconsistency for whole-genome TE annotation (slow step):
+
+		Wed Sep 28 10:20:00 EDT 2022    Evaluation of TE annotation finished! Check out these files:
+
+										Overall: genome.fa.mod.EDTA.TE.fa.stat.all.sum
+										Nested: genome.fa.mod.EDTA.TE.fa.stat.nested.sum
+										Non-nested: genome.fa.mod.EDTA.TE.fa.stat.redun.sum
+
+
+
+#Run and inputs
+
+	#Required: The genome file [FASTA]. Please make sure sequence names are short (<=13 characters) and simple (i.e, letters, numbers, and underscore).
+
+Optional:
+
+	#Coding sequence of the species or a closely related species [FASTA]. This file helps to purge gene sequences in the TE library.
+	
+		#  --cds [File]		Provide a FASTA file containing the coding sequence (no introns, UTRs, nor TEs) of this genome or its close relative.
+
+	
+	# Known gene positions of this version of the genome assembly [BED]. Coordinates specified in this file will be excluded from TE annotation to avoid over-masking.
+	
+		#No, doing the TE annotation first
+	
+	#Curated TE library of the species [FASTA]. This file is trusted 100%. Please make sure it's curated. If you only have a couple of curated sequences, that's fine. It doesn't need to be complete. Providing curated TE sequences, especially for those under annotated TE types (i.e., SINEs and LINEs), will greatly improve the annotation quality.
+	
+		#No, doesn't exist

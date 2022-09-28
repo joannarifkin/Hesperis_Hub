@@ -1,0 +1,14 @@
+
+#Make a fresh copy of the fasta with a simpler filename
+
+cp jordan-uni3482-mb-hirise-zz7pr__09-26-2022__final_assembly.fasta Hesperis_assembly.fasta &
+
+#Collect contig names and lengths for safekeeping
+grep -e ">" jordan-uni3482-mb-hirise-zz7pr__09-26-2022__final_assembly.fasta > all_contig_names.txt &
+
+#Simplify contig names in assembly copy
+sed -ri 's/^(>Scaffold_[[:digit:]]+).+$/\1/' Hesperis_assembly.fasta &
+
+#Zip original
+gzip jordan-uni3482-mb-hirise-zz7pr__09-26-2022__final_assembly.fasta
+
