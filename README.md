@@ -1,2 +1,3 @@
 # Hesperis
-Files related to the Hesperis matronalis genome assembly
+
+A centralized resource for the *Hesperis matronalis* research community.
