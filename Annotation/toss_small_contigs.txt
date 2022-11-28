@@ -1,0 +1,7 @@
+
+
+Hesperis_assembly.fasta
+
+
+awk "/^>/ {n++} n>46 {exit} {print}" Hesperis_assembly.fasta > Hesperis_assembly_big_contigs.fasta &
+
