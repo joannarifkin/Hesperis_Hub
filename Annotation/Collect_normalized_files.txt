@@ -1,6 +1,6 @@
 
+ls /nfs/turbo/rsbaucom/lab/Hesperis_transcriptome_assemblies_2022/Trinity_normalize/*/insilico_read_normalization/*minC1_maxCV10000.fq | parallel -j 10 --progress pigz -k {} & #Compress all files with pigz
 
-gzip -k /nfs/turbo/rsbaucom/lab/Hesperis_transcriptome_assemblies_2022/Trinity_normalize/*/insilico_read_normalization/*.fq &
-Trinity_normalize/HI.0286.001.Index_13.Hesp1_trinity_out/insilico_read_normalization &
+mv /nfs/turbo/rsbaucom/lab/Hesperis_transcriptome_assemblies_2022/Trinity_normalize/*/insilico_read_normalization/*.fq.gz /nfs/turbo/rsbaucom/lab/Hesperis_transcriptome_assemblies_2022/Trinity_normalize/Normalized_reads/ #collect all files
 
-mv /nfs/turbo/rsbaucom/lab/Hesperis_transcriptome_assemblies_2022/Trinity_normalize/*/insilico_read_normalization/*.fq.gz /nfs/turbo/rsbaucom/lab/Hesperis_transcriptome_assemblies_2022/Trinity_normalize/Normalized_reads/
+rename .fq.gz.normalized_K25_maxC200_minC1_maxCV10000.fq.gz _normalized.fq.gz * & #Rename all files
