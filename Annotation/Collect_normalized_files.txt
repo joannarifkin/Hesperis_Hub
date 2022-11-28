@@ -1,0 +1,6 @@
+
+
+gzip -k /nfs/turbo/rsbaucom/lab/Hesperis_transcriptome_assemblies_2022/Trinity_normalize/*/insilico_read_normalization/*.fq &
+Trinity_normalize/HI.0286.001.Index_13.Hesp1_trinity_out/insilico_read_normalization &
+
+mv /nfs/turbo/rsbaucom/lab/Hesperis_transcriptome_assemblies_2022/Trinity_normalize/*/insilico_read_normalization/*.fq.gz /nfs/turbo/rsbaucom/lab/Hesperis_transcriptome_assemblies_2022/Trinity_normalize/Normalized_reads/
