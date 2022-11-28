@@ -19,6 +19,6 @@ module list
 
 STAR --runThreadN 12 \
 --runMode genomeGenerate \
---genomeDir /nfs/turbo/rsbaucom/lab/Hesperis_Dovetail/Hi-Rise_Assembly_September_2022/ \
---genomeFastaFiles /nfs/turbo/rsbaucom/lab/Hesperis_Dovetail/Hi-Rise_Assembly_September_2022/Hesperis_assembly_big_contigs.fasta \
+--genomeDir /nfs/turbo/rsbaucom/lab/Hesperis_Dovetail/Hi-Rise_Assembly_September_2022/Hesperis_assembly_big_contigs \
+--genomeFastaFiles /nfs/turbo/rsbaucom/lab/Hesperis_Dovetail/Hi-Rise_Assembly_September_2022/Hesperis_assembly_big_contigs/Hesperis_assembly_big_contigs.fasta \
 --genomeSAindexNbases 13
