@@ -1,0 +1,17 @@
+
+# QC sequence
+	Both leaf and floral samples have high levels of duplication (expected for transcriptome) and adapter contamination.
+	
+# Trim sequence
+
+
+
+# Run subassemblies
+	
+	#Trinity
+	
+	#Velvet
+	
+	#Spades
+	
+	#TransAbyss
