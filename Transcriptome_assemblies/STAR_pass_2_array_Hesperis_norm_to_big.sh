@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --account=rsbaucom0
-#SBATCH --job-name=STAR_pass_1_Rifkin_Hesperis_normalized
+#SBATCH --job-name=STAR_pass_2_Rifkin_Hesperis_normalized
 #SBATCH --mail-user=jlrifkin@umich.edu
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --cpus-per-task=32
@@ -10,7 +10,7 @@
 #SBATCH --mem=64GB
 #SBATCH --time=2-00:00
 #SBATCH --partition=standard
-#SBATCH --output=Hesperis_STAR_pass_1_normalized-%A-%a.log
+#SBATCH --output=Hesperis_STAR_pass_2_normalized-%A-%a.log
 #SBATCH --array=1-20
 
 
@@ -33,11 +33,13 @@ echo $basefile
 echo $samplename
 
 mkdir -p ./STAR/Normalized/
-mkdir -p ./STAR/Normalized/Pass1/
+mkdir -p ./STAR/Normalized/Pass2/
 
 STAR --runThreadN 6 \
 --genomeDir /nfs/turbo/rsbaucom/lab/Hesperis_Dovetail/Hi-Rise_Assembly_September_2022/Hesperis_assembly_big_contigs \
 --readFilesIn $basefile\_R1_val_1_normalized.fq.gz $basefile\_R2_val_2_normalized.fq.gz \
 --readFilesCommand zcat \
---outFileNamePrefix ./STAR/Normalized/Pass1/$samplename \
---outSAMtype BAM Unsorted
+--outFileNamePrefix ./STAR/Normalized/Pass2/$samplename \
+--outSAMtype BAM SortedByCoordinate \
+--sjdbFileChrStartEnd STAR/Normalized_SJ.all.tab
+
