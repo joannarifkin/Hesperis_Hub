@@ -6,7 +6,8 @@
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --nodes=4
 #SBATCH --ntasks-per-node=4
-#SBATCH --mem=128GB
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=96GB
 #SBATCH --time=14-00:00
 #SBATCH --output=EDTA-%A-%a.log
 #SBATCH --error=EDTA_error-%A-%a.log
