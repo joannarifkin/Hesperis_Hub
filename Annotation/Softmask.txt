@@ -1,0 +1,18 @@
+softmask genome
+
+#Make soft-masked version of whole genome
+
+perl /nfs/turbo/rsbaucom/lab/SOFTWARE/EDTA_utils/make_masked.pl -genome /nfs/turbo/rsbaucom/lab/Hesperis_Dovetail/Hi-Rise_Assembly_September_2022/Hesperis_assembly.fasta -rmout /nfs/turbo/rsbaucom/lab/Hesperis_Dovetail/Hi-Rise_Assembly_September_2022/EDTA_TE_annotation/Hesperis_assembly.fasta.mod.EDTA.anno/Hesperis_assembly.fasta.mod.EDTA.RM.out -hardmask 0 &
+
+
+#Make soft-masked version of big contigs genome
+
+perl /nfs/turbo/rsbaucom/lab/SOFTWARE/EDTA_utils/make_masked.pl -genome /nfs/turbo/rsbaucom/lab/Hesperis_Dovetail/Hi-Rise_Assembly_September_2022/Hesperis_assembly_big_contigs/Hesperis_assembly_big_contigs.fasta -rmout /nfs/turbo/rsbaucom/lab/Hesperis_Dovetail/Hi-Rise_Assembly_September_2022/EDTA_TE_annotation/Hesperis_assembly.fasta.mod.EDTA.anno/Hesperis_assembly.fasta.mod.EDTA.RM.out -hardmask 0 &
+
+/EDTA/util
+
+singularity exec /nfs/turbo/rsbaucom/lab/SOFTWARE/EDTA.sif perl /util/make_masked.pl
+
+singularity exec /nfs/turbo/rsbaucom/lab/SOFTWARE/EDTA.sif perl /EDTA/util/make_masked.pl
+
+/EDTA/util/make_masked.pl
